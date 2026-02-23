@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - E-Commerce</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-box">
+            <h2>Login</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <input type="email" id="email" placeholder="Enter Email" required>
+                    <span class="error-message" id="email-error"></span>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="password" placeholder="Enter Password" required>
+                    <span class="error-message" id="password-error"></span>
+                </div>
+                <button type="submit" class="auth-btn login-btn">Login</button>
+            </form>
+            <p class="auth-link">Don't have an account? <a href="register.html">Register</a></p>
+        </div>
+    </div>
+
+    <script type="module" src="auth.js"></script>
+</body>
+</html>

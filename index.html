@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Store</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="index.html">🛍️ E-Shop</a>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="#contact">Contact</a>
+            <a href="cart.html" class="cart-icon">
+                🛒 <span id="cart-count">0</span>
+            </a>
+            <span id="user-name" class="user-name"></span>
+            <a href="#" id="auth-link">Login</a>
+            <a href="#" id="logout-btn" class="logout-btn" style="display: none;">Logout</a>
+        </div>
+    </nav>
+
+    <!-- Slider Section -->
+    <section class="slider" id="slider">
+        <div class="slider-background" id="slider-background"></div>
+        <div class="slider-overlay"></div>
+        <div class="slider-content">
+            <h1>Welcome to Our Store</h1>
+            <p>Discover Amazing Products</p>
+        </div>
+    </section>
+
+    <section class="products-section">
+        <h2>Our Products</h2>
+
+        <div class="category-buttons">
+            <button class="category-btn active" data-category="all">All</button>
+            <button class="category-btn" data-category="clothes">Clothes</button>
+            <button class="category-btn" data-category="makeup">Makeup</button>
+            <button class="category-btn" data-category="phones">Phones</button>
+            <button class="category-btn" data-category="watches">Watches</button>
+            <button class="category-btn" data-category="sofas">Sofas</button>
+            <button class="category-btn" data-category="shoes">Shoes</button>
+        </div>
+
+      
+        <div class="products-grid" id="products-container">
+        </div>
+    </section>
+
+  
+    <footer class="footer">
+        <p>&copy; 2026 E-Commerce Store. All Rights Reserved.</p>
+        <button class="scroll-top" id="scroll-top">⬆</button>
+    </footer>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
