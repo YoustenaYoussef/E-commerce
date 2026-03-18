@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart - E-Commerce</title>
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+    
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="index.html">E-Commerce</a>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="favorites.html">Favorites</a>
+            <a href="contact.html">Contact</a>
+            <button id="theme-toggle" class="theme-toggle-btn" type="button">Dark</button>
+            <a href="cart.html" class="cart-icon active">
+                🛒 <span id="cart-count">0</span>
+            </a>
+            <span id="user-name" class="user-name"></span>
+            <a href="#" id="auth-link">Login</a>
+            <a href="#" id="logout-btn" class="logout-btn" style="display: none;">Logout</a>
+        </div>
+    </nav>
+
+  
+    <section class="cart-section">
+        <h2>Cart Page</h2>
+        
+        <div class="cart-container">
+        
+            <div class="cart-items" id="cart-items">
+                
+            </div>
+
+            
+            <div class="cart-summary">
+                <div class="promo-code-box">
+                    <label for="promo-code">Promo Code</label>
+                    <div class="promo-actions">
+                        <input type="text" id="promo-code" placeholder="Example: SAVE10">
+                        <button class="promo-btn" id="apply-promo-btn">Apply</button>
+                        <button class="promo-btn promo-btn-remove" id="remove-promo-btn" type="button">Remove</button>
+                    </div>
+                    <p class="promo-message" id="promo-message"></p>
+                </div>
+                <div class="cart-totals">
+                    <p>Subtotal: <span id="subtotal-amount">0$</span></p>
+                    <p>Discount: <span id="discount-amount">0$</span></p>
+                    <p class="total-amount">Total Amount: <span id="total-amount">0$</span></p>
+                </div>
+                <button class="buy-now-btn" id="buy-now-btn">Buy Now</button>
+            </div>
+        </div>
+
+      
+        <div class="order-shipped" id="order-shipped" style="display: none;">
+            <h2>Order Shipped</h2>
+            <p>Thank you for your purchase!</p>
+        </div>
+    </section>
+
+  
+    <footer class="footer">
+        <button class="scroll-top" id="scroll-top">⬆</button>
+    </footer>
+
+    <script src="js/theme.js"></script>
+    <script src="js/cart.js"></script>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Execution Context Demo - E-Commerce</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="index.html">E-Commerce</a>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="execution-context.html" class="active">ES6 Demo</a>
+        </div>
+    </nav>
+
+    <!-- Execution Context Demo Section -->
+    <section class="demo-section">
+        <h1>Execution Context Demonstration</h1>
+        <p>Open the browser console (F12) to see the results of each demonstration.</p>
+
+        <div class="demo-container">
+            <!-- Hoisting Demo -->
+            <div class="demo-box">
+                <h2>1. Hoisting</h2>
+                <p>Variable and function declarations are moved to the top of their scope.</p>
+                <button class="demo-btn" id="hoisting-demo">Run Hoisting Demo</button>
+                <pre class="code-block">
+// Variable Hoisting
+console.log(x); // undefined (var is hoisted)
+var x = 10;
+
+// console.log(y); // ReferenceError (let is not hoisted)
+let y = 20;
+
+// const behaves like let
+// console.log(z); // ReferenceError
+const z = 30;
+                </pre>
+            </div>
+
+            <!-- Function Hoisting Demo -->
+            <div class="demo-box">
+                <h2>2. Function Hoisting</h2>
+                <p>Function declarations are hoisted completely, expressions are not.</p>
+                <button class="demo-btn" id="function-hoisting-demo">Run Function Hoisting Demo</button>
+                <pre class="code-block">
+// Function Declaration - Hoisted
+sayHello(); // Works! "Hello"
+
+function sayHello() {
+    console.log("Hello");
+}
+
+// Function Expression - NOT Hoisted
+// sayGoodbye(); // TypeError: not a function
+
+const sayGoodbye = function() {
+    console.log("Goodbye");
+};
+
+// Arrow Function - NOT Hoisted
+// greet(); // TypeError
+
+const greet = () => console.log("Hi");
+                </pre>
+            </div>
+
+            <!-- Call Stack Demo -->
+            <div class="demo-box">
+                <h2>3. Call Stack</h2>
+                <p>JavaScript uses a call stack to manage execution contexts.</p>
+                <button class="demo-btn" id="callstack-demo">Run Call Stack Demo</button>
+                <pre class="code-block">
+function first() {
+    console.log("First - Start");
+    second();
+    console.log("First - End");
+}
+
+function second() {
+    console.log("Second - Start");
+    third();
+    console.log("Second - End");
+}
+
+function third() {
+    console.log("Third - Only");
+}
+
+first();
+
+// Output:
+// First - Start
+// Second - Start
+// Third - Only
+// Second - End
+// First - End
+                </pre>
+            </div>
+
+            <!-- Global vs Function Scope Demo -->
+            <div class="demo-box">
+                <h2>4. Global vs Function Scope</h2>
+                <p>Variables have different accessibility based on where they are declared.</p>
+                <button class="demo-btn" id="scope-demo">Run Scope Demo</button>
+                <pre class="code-block">
+// Global Scope
+var globalVar = "I'm global (var)";
+let globalLet = "I'm global (let)";
+const globalConst = "I'm global (const)";
+
+function checkScope() {
+    // Function Scope
+    var functionVar = "I'm function scoped";
+    let functionLet = "I'm block scoped";
+    
+    console.log(globalVar); // Accessible
+    console.log(functionVar); // Accessible
+    
+    if (true) {
+        // Block Scope
+        let blockLet = "I'm block scoped";
+        var blockVar = "I'm function scoped (var ignores block)";
+        console.log(blockLet); // Accessible here
+    }
+    
+    // console.log(blockLet); // ReferenceError
+    console.log(blockVar); // Accessible (var is function-scoped)
+}
+
+checkScope();
+// console.log(functionVar); // ReferenceError
+                </pre>
+            </div>
+
+            <!-- this Keyword Demo -->
+            <div class="demo-box">
+                <h2>5. The 'this' Keyword</h2>
+                <p>The value of 'this' depends on how a function is called.</p>
+                <button class="demo-btn" id="this-demo">Run 'this' Demo</button>
+                <pre class="code-block">
+// Global context
+console.log(this); // Window object
+
+// Object method
+const person = {
+    name: "Ali",
+    greet: function() {
+        console.log(this.name); // "Ali"
+    },
+    // Arrow function doesn't have its own 'this'
+    greetArrow: () => {
+        console.log(this.name); // undefined (window.name)
+    }
+};
+
+person.greet();
+person.greetArrow();
+
+// Constructor function
+function User(name) {
+    this.name = name;
+    this.display = function() {
+        console.log(this.name);
+    };
+}
+
+const user1 = new User("Mona");
+user1.display(); // "Mona"
+
+// Arrow in setTimeout (preserves 'this')
+const obj = {
+    name: "Object",
+    delayed: function() {
+        setTimeout(() => {
+            console.log(this.name); // "Object"
+        }, 100);
+    }
+};
+                </pre>
+            </div>
+
+            <!-- ES6 Features Demo -->
+            <div class="demo-box">
+                <h2>6. ES6 Features Used in Project</h2>
+                <p>Demonstration of ES6 features used throughout the project.</p>
+                <button class="demo-btn" id="es6-demo">Run ES6 Features Demo</button>
+                <pre class="code-block">
+// 1. let & const
+let mutableVar = "can change";
+const immutableVar = "cannot reassign";
+
+// 2. Arrow Functions
+const add = (a, b) => a + b;
+const square = x => x * x;
+
+// 3. Template Literals
+const name = "World";
+console.log(`Hello, ${name}!`);
+
+// 4. Destructuring
+const [first, second] = [1, 2];
+const { fname, age } = { fname: "Ali", age: 25 };
+
+// 5. Spread Operator
+const arr1 = [1, 2, 3];
+const arr2 = [...arr1, 4, 5];
+const obj1 = { a: 1 };
+const obj2 = { ...obj1, b: 2 };
+
+// 6. Default Parameters
+const greet = (name = "Guest") => `Hello, ${name}`;
+
+// 7. map, filter, reduce
+const numbers = [1, 2, 3, 4, 5];
+const doubled = numbers.map(n => n * 2);
+const evens = numbers.filter(n => n % 2 === 0);
+const sum = numbers.reduce((acc, n) => acc + n, 0);
+                </pre>
+            </div>
+        </div>
+    </section>
+
+    <script type="module" src="execution-context.js"></script>
+</body>
+</html>
