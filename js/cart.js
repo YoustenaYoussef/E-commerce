@@ -20,8 +20,6 @@ const getCart = () => getFromLocalStorage('cart', []);
 
 const saveCart = (cart) => saveToLocalStorage('cart', cart);
 
-<<<<<<< HEAD
-=======
 const PROMO_CODES = {
     SAVE10: { type: 'percentage', value: 10 },
     WELCOME15: { type: 'percentage', value: 15 },
@@ -34,7 +32,6 @@ const saveAppliedPromo = (promoCode) => saveToLocalStorage('appliedPromo', promo
 
 const clearAppliedPromo = () => localStorage.removeItem('appliedPromo');
 
->>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
 
 const updateCartCount = () => {
     const cart = getCart();
@@ -54,17 +51,6 @@ const calculateTotal = (cart) => {
     }, 0); 
 };
 
-<<<<<<< HEAD
-
-const updateTotalDisplay = () => {
-    const cart = getCart();
-    const total = calculateTotal(cart);
-    const totalElement = document.getElementById('total-amount');
-    if (totalElement) {
-    
-        totalElement.textContent = `${total}$`;
-    }
-=======
 const calculateDiscountAmount = (subtotal, promoCode) => {
     if (!promoCode || !PROMO_CODES[promoCode]) return 0;
 
@@ -178,7 +164,6 @@ const restorePromoCodeUI = () => {
     }
 
     syncPromoControls();
->>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
 };
 
 
@@ -234,10 +219,7 @@ const removeItem = (productId) => {
 
 const clearCart = () => {
     saveCart([]);
-<<<<<<< HEAD
-=======
     clearAppliedPromo();
->>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
     updateCartCount();
 };
 
@@ -250,10 +232,7 @@ const renderCartItems = () => {
     container.innerHTML = '';
 
     if (cart.length === 0) {
-<<<<<<< HEAD
-=======
         clearAppliedPromo();
->>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
         container.innerHTML = `
             <div class="empty-cart">
                 <h3>Your cart is empty</h3>
@@ -324,11 +303,7 @@ const buyNow = () => {
     const cart = getCart();
     
     if (cart.length === 0) {
-<<<<<<< HEAD
-        alert('Your cart is empty!');
-=======
         showPromoMessage('Your cart is empty. Add products first.');
->>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
         return;
     }
 
@@ -410,11 +385,8 @@ const initCart = () => {
   
     updateTotalDisplay();
 
-<<<<<<< HEAD
-=======
     restorePromoCodeUI();
 
->>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
 
     updateNavigation();
 
@@ -424,8 +396,6 @@ const initCart = () => {
         buyNowBtn.addEventListener('click', buyNow);
     }
 
-<<<<<<< HEAD
-=======
     const applyPromoBtn = document.getElementById('apply-promo-btn');
     if (applyPromoBtn) {
         applyPromoBtn.addEventListener('click', applyPromoCode);
@@ -448,7 +418,6 @@ const initCart = () => {
 
     syncPromoControls();
 
->>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
     
     const logoutBtn = document.getElementById('logout-btn');
     if (logoutBtn) {
@@ -466,17 +435,3 @@ const initCart = () => {
 };
 
 document.addEventListener('DOMContentLoaded', initCart);
-<<<<<<< HEAD
-
-export {
-    getCart,
-    saveCart,
-    calculateTotal,
-    increaseQuantity,
-    decreaseQuantity,
-    removeItem,
-    clearCart,
-    buyNow
-};
-=======
->>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)

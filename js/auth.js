@@ -214,16 +214,3 @@ const initAuth = () => {
 };
 
 document.addEventListener('DOMContentLoaded', initAuth);
-<<<<<<< HEAD
-
-
-export {
-    isValidEmail,
-    isValidPassword,
-    isValidName,
-    doPasswordsMatch,
-    handleRegister,
-    handleLogin
-};
-=======
->>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)

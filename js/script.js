@@ -221,11 +221,6 @@ const products = [
     }
 ];
 
-<<<<<<< HEAD
-export { products };
-
-=======
->>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
 const productQuantities = {};
 
 products.forEach(product => {
@@ -261,8 +256,6 @@ const saveToLocalStorage = (key, value) => {
     localStorage.setItem(key, JSON.stringify(value));
 };
 
-<<<<<<< HEAD
-=======
 const showToast = (message, type = 'success') => {
     let toastContainer = document.getElementById('toast-container');
     if (!toastContainer) {
@@ -282,7 +275,6 @@ const showToast = (message, type = 'success') => {
     }, 2200);
 };
 
->>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
 
 const isLoggedIn = () => {
     const session = getFromLocalStorage('currentUser');
@@ -297,8 +289,6 @@ const getCart = () => getFromLocalStorage('cart', []);
 
 const saveCart = (cart) => saveToLocalStorage('cart', cart);
 
-<<<<<<< HEAD
-=======
 const getFavorites = () => getFromLocalStorage('favorites', []);
 
 
@@ -321,7 +311,6 @@ const toggleFavorite = (productId) => {
     return !isAlreadyFavorite;
 };
 
->>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
 const updateCartCount = () => {
     const cart = getCart();
     const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
@@ -365,11 +354,7 @@ const addToCart = (productId) => {
     productQuantities[productId] = 1;
     
     updateCartCount();
-<<<<<<< HEAD
-    alert(`${quantityToAdd} item(s) added to cart!`);
-=======
     showToast(`${quantityToAdd} item(s) added to cart.`);
->>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
     
     renderProducts();
 };
@@ -404,8 +389,6 @@ const getStarRating = (rating = 0) => {
     return stars.join('');
 };
 
-<<<<<<< HEAD
-=======
 const renderFavoritesSection = () => {
     const container = document.getElementById('favorites-container');
     if (!container) return;
@@ -474,7 +457,6 @@ const renderFavoritesSection = () => {
     });
 };
 
->>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
 const renderProducts = (productsToRender = products) => {
     const container = document.getElementById('products-container');
     if (!container) return;
@@ -491,15 +473,10 @@ const renderProducts = (productsToRender = products) => {
 
         const currentQuantity = productQuantities[id];
 
-<<<<<<< HEAD
-        productCard.innerHTML = `
-            <div class="favorite-icon" data-id="${id}">♡</div>
-=======
         const favoriteActive = isFavorite(id);
 
         productCard.innerHTML = `
             <div class="favorite-icon ${favoriteActive ? 'active' : ''}" data-id="${id}">${favoriteActive ? '♥' : '♡'}</div>
->>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
             <img src="${image}" alt="${name}" onerror="this.src='https://via.placeholder.com/300x200?text=No+Image'">
             <div class="product-info">
                 <h3>${name}</h3>
@@ -533,17 +510,12 @@ const renderProducts = (productsToRender = products) => {
     favoriteIcons.forEach(icon => {
         icon.addEventListener('click', (e) => {
             e.stopPropagation();
-<<<<<<< HEAD
-            icon.classList.toggle('active');
-            icon.textContent = icon.classList.contains('active') ? '♥' : '♡';
-=======
             const productId = parseInt(icon.dataset.id);
             const isNowFavorite = toggleFavorite(productId);
             icon.classList.toggle('active');
             icon.textContent = icon.classList.contains('active') ? '♥' : '♡';
             renderFavoritesSection();
             showToast(isNowFavorite ? 'Added to favorites.' : 'Removed from favorites.', isNowFavorite ? 'success' : 'info');
->>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
         });
     });
 
@@ -641,8 +613,6 @@ const scrollToTop = () => {
     });
 };
 
-<<<<<<< HEAD
-=======
 const initContactForm = () => {
     const contactForm = document.getElementById('contact-form');
     if (!contactForm) return;
@@ -736,28 +706,21 @@ const initContactForm = () => {
     });
 };
 
->>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
 
 const init = () => {
   
     startAutoSlider();
     
     renderProducts();
-<<<<<<< HEAD
-=======
 
     renderFavoritesSection();
->>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
     
     updateCartCount();
     
     updateNavigation();
 
-<<<<<<< HEAD
-=======
     initContactForm();
 
->>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
     const categoryButtons = document.querySelectorAll('.category-btn');
     categoryButtons.forEach(btn => {
         btn.addEventListener('click', (e) => {
@@ -788,25 +751,3 @@ const init = () => {
 };
 
 document.addEventListener('DOMContentLoaded', init);
-<<<<<<< HEAD
-
-
-export {
-    getFromLocalStorage,
-    saveToLocalStorage,
-    isLoggedIn,
-    getCurrentUser,
-    getCart,
-    saveCart,
-    updateCartCount,
-    addToCart,
-    updateNavigation,
-    logout,
-    scrollToTop,
-    getStarRating,
-    increaseProductQuantity,
-    decreaseProductQuantity,
-    productQuantities
-};
-=======
->>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)

@@ -1,19 +1,4 @@
 
-<<<<<<< HEAD
-
-import { products } from './script.js';
-import { 
-    isLoggedIn, 
-    getCart, 
-    saveCart, 
-    updateCartCount, 
-    updateNavigation, 
-    logout,
-    scrollToTop 
-} from './script.js';
-
-=======
->>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
 const getProductIdFromURL = () => {
   
     const urlParams = new URLSearchParams(window.location.search);
@@ -25,8 +10,6 @@ const findProductById = (id) => {
     return products.find(product => product.id === id);
 };
 
-<<<<<<< HEAD
-=======
 const getReviewsKey = (productId) => `productReviews_${productId}`;
 
 const getProductReviews = (productId) => {
@@ -226,7 +209,6 @@ const renderReviewsSection = (productId) => {
     renderReviewsList(productId);
 };
 
->>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
 const addToCartFromDetails = (productId) => {
     if (!isLoggedIn()) {
         alert('Please login to add items to cart!');
@@ -260,11 +242,7 @@ const addToCartFromDetails = (productId) => {
     }
     
     updateCartCount();
-<<<<<<< HEAD
-    alert('Product added to cart!');
-=======
     showDetailsToast('Product added to cart.');
->>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
 };
 
 const renderProductDetails = (product) => {
@@ -346,11 +324,8 @@ const initProductDetails = () => {
 
     renderProductDetails(product);
 
-<<<<<<< HEAD
-=======
     renderReviewsSection(product.id);
 
->>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
     updateCartCount();
 
     updateNavigation();
@@ -370,13 +345,3 @@ const initProductDetails = () => {
 };
 
 document.addEventListener('DOMContentLoaded', initProductDetails);
-<<<<<<< HEAD
-
-export {
-    getProductIdFromURL,
-    findProductById,
-    addToCartFromDetails,
-    renderProductDetails
-};
-=======
->>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
