@@ -16,15 +16,42 @@
     --light-color: #dfe6e9;
     --white: #ffffff;
     --text-color: #333;
+<<<<<<< HEAD
+=======
+    --body-bg: #f5f6fa;
+>>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
     --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     --transition: all 0.3s ease;
 }
 
+<<<<<<< HEAD
+=======
+body.dark-theme {
+    --primary-color: #22d3ee;
+    --secondary-color: #06b6d4;
+    --accent-color: #f59e0b;
+    --success-color: #34d399;
+    --warning-color: #fbbf24;
+    --danger-color: #fb7185;
+    --dark-color: #f8fafc;
+    --light-color: #334155;
+    --white: #0f172a;
+    --text-color: #e2e8f0;
+    --body-bg: #020617;
+    --shadow: 0 10px 24px rgba(2, 6, 23, 0.55);
+}
+
+>>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: var(--text-color);
+<<<<<<< HEAD
     background-color: #f5f6fa;
+=======
+    background-color: var(--body-bg);
+    transition: background-color 0.25s ease, color 0.25s ease;
+>>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
 }
 
 a {
@@ -100,6 +127,32 @@ a {
     color: var(--danger-color) !important;
 }
 
+<<<<<<< HEAD
+=======
+.theme-toggle-btn {
+    border: 1px solid var(--light-color);
+    background: var(--white);
+    color: var(--text-color);
+    padding: 0.45rem 0.85rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.theme-toggle-btn:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.floating-theme-btn {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 2000;
+}
+
+>>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
 /* ================================
    Slider Section
    ================================ */
@@ -185,6 +238,32 @@ a {
     font-weight: 700;
 }
 
+<<<<<<< HEAD
+=======
+.favorites-section {
+    padding: 0 2rem 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.standalone-favorites {
+    padding-top: 2rem;
+    min-height: 70vh;
+}
+
+.favorites-section h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--dark-color);
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.favorite-card {
+    border: 1px solid #f8d7da;
+}
+
+>>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
 /* Category Buttons */
 .category-buttons {
     display: flex;
@@ -236,6 +315,43 @@ a {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
+<<<<<<< HEAD
+=======
+body.dark-theme .product-card,
+body.dark-theme .cart-item,
+body.dark-theme .contact-info-card,
+body.dark-theme .contact-form,
+body.dark-theme .review-card,
+body.dark-theme .auth-box,
+body.dark-theme .reviews-section,
+body.dark-theme .cart-container,
+body.dark-theme .product-details-container {
+    border-color: #334155;
+}
+
+body.dark-theme .product-card img {
+    background: #1e293b;
+}
+
+body.dark-theme .product-info .category,
+body.dark-theme .auth-link,
+body.dark-theme .demo-box p,
+body.dark-theme .empty-cart,
+body.dark-theme .review-date {
+    color: #cbd5e1;
+}
+
+body.dark-theme .product-info .price,
+body.dark-theme .quantity-display-small {
+    color: #e2e8f0;
+}
+
+body.dark-theme .quantity-display-small {
+    background: #1e293b;
+    border-color: #334155;
+}
+
+>>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
 .product-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
@@ -284,6 +400,16 @@ a {
     color: #e74c3c;
     background: #fee;
     border-color: #e74c3c;
+<<<<<<< HEAD
+=======
+    animation: popHeart 0.22s ease;
+}
+
+@keyframes popHeart {
+    0% { transform: scale(0.9); }
+    70% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+>>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
 }
 
 .product-info {
@@ -484,6 +610,137 @@ a {
     transform: scale(1.05);
 }
 
+<<<<<<< HEAD
+=======
+.reviews-wrapper {
+    max-width: 1000px;
+    margin: 0 auto 3rem;
+    padding: 0 2rem;
+}
+
+.reviews-section {
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+}
+
+.reviews-section h2 {
+    color: var(--dark-color);
+    margin-bottom: 1rem;
+}
+
+.review-form {
+    display: grid;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.review-form textarea,
+.review-form input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--light-color);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    background: var(--white);
+    color: var(--text-color);
+}
+
+.review-form textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+.rating-stars {
+    display: flex;
+    gap: 0.4rem;
+}
+
+.rating-star {
+    border: none;
+    background: transparent;
+    color: #94a3b8;
+    font-size: 1.8rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.rating-star:hover {
+    transform: scale(1.1);
+    color: #facc15;
+}
+
+.rating-star.selected {
+    color: #fbbf24;
+}
+
+.review-submit-btn {
+    width: fit-content;
+    padding: 0.7rem 1.2rem;
+    border: none;
+    border-radius: 8px;
+    background: var(--primary-color);
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.review-status {
+    min-height: 20px;
+    font-size: 0.9rem;
+}
+
+.review-status.success {
+    color: var(--success-color);
+}
+
+.review-status.error {
+    color: var(--danger-color);
+}
+
+.reviews-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.review-card {
+    border: 1px solid var(--light-color);
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.review-user {
+    font-weight: 700;
+    color: var(--dark-color);
+}
+
+.review-date {
+    font-size: 0.85rem;
+    opacity: 0.8;
+}
+
+.review-stars {
+    color: #fbbf24;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+}
+
+.review-media {
+    margin-top: 0.75rem;
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+>>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
 /* ================================
    Cart Page
    ================================ */
@@ -582,10 +839,96 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
+<<<<<<< HEAD
+=======
+    gap: 1rem;
+    flex-wrap: wrap;
+>>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
     padding-top: 1rem;
     border-top: 2px solid var(--light-color);
 }
 
+<<<<<<< HEAD
+=======
+.promo-code-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+    min-width: 260px;
+}
+
+.promo-code-box label {
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+.promo-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.promo-actions input {
+    flex: 1;
+    padding: 0.7rem;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 0.95rem;
+}
+
+.promo-btn {
+    padding: 0.7rem 1rem;
+    border: none;
+    border-radius: 8px;
+    background: #1f2937;
+    color: var(--white);
+    cursor: pointer;
+    font-weight: 600;
+}
+
+body.dark-theme .promo-btn {
+    background: #0b1220;
+    border: 1px solid #334155;
+}
+
+.promo-btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.promo-btn-remove {
+    background: transparent;
+    color: var(--danger-color);
+    border: 1px solid var(--danger-color);
+    display: none;
+}
+
+.promo-btn:hover {
+    opacity: 0.92;
+}
+
+.promo-message {
+    min-height: 20px;
+    font-size: 0.88rem;
+}
+
+.promo-message.success {
+    color: #16a34a;
+}
+
+.promo-message.error {
+    color: #dc2626;
+}
+
+.cart-totals {
+    min-width: 220px;
+}
+
+.cart-totals p {
+    margin: 0.2rem 0;
+}
+
+>>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
 .total-amount {
     font-size: 1.3rem;
     color: var(--primary-color);
@@ -775,6 +1118,152 @@ a {
     background: var(--secondary-color);
 }
 
+<<<<<<< HEAD
+=======
+/* ================================
+   Contact Section
+   ================================ */
+.contact-section {
+    max-width: 1200px;
+    margin: 0 auto 3rem;
+    padding: 2rem;
+}
+
+.contact-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.contact-header h2 {
+    font-size: 2rem;
+    color: var(--dark-color);
+}
+
+.contact-header p {
+    color: var(--text-color);
+    opacity: 0.9;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 1rem;
+}
+
+.contact-info-card,
+.contact-form {
+    background: var(--white);
+    border: 1px solid var(--light-color);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    padding: 1.2rem;
+}
+
+.contact-info-card h3 {
+    margin-bottom: 0.8rem;
+    color: var(--primary-color);
+}
+
+.contact-form {
+    display: grid;
+    gap: 0.8rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--light-color);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    background: var(--white);
+    color: var(--text-color);
+}
+
+.contact-form textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.contact-field-error {
+    min-height: 16px;
+    font-size: 0.8rem;
+    color: var(--danger-color);
+    margin-top: -0.25rem;
+}
+
+.contact-submit-btn {
+    width: fit-content;
+    padding: 0.7rem 1.1rem;
+    border: none;
+    border-radius: 8px;
+    background: var(--primary-color);
+    color: #fff;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.contact-submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.contact-status {
+    min-height: 22px;
+    font-size: 0.9rem;
+}
+
+.contact-status.success {
+    color: var(--success-color);
+}
+
+.contact-status.error {
+    color: var(--danger-color);
+}
+
+.empty-state-link {
+    display: inline-block;
+    margin-top: 0.7rem;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+#toast-container {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    display: grid;
+    gap: 0.5rem;
+    z-index: 3000;
+}
+
+.toast {
+    background: var(--white);
+    color: var(--text-color);
+    border: 1px solid var(--light-color);
+    border-radius: 10px;
+    padding: 0.7rem 0.9rem;
+    min-width: 220px;
+    box-shadow: var(--shadow);
+    animation: slideInUp 0.22s ease;
+}
+
+.toast-success { border-left: 4px solid var(--success-color); }
+.toast-info { border-left: 4px solid var(--primary-color); }
+.toast-error { border-left: 4px solid var(--danger-color); }
+
+.toast.hide {
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+@keyframes slideInUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+>>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
 .code-block {
     background: var(--dark-color);
     color: #f5f6fa;
@@ -878,10 +1367,24 @@ a {
         gap: 1rem;
     }
 
+<<<<<<< HEAD
+=======
+    .promo-actions {
+        width: 100%;
+    }
+
+>>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
     .filter-buttons {
         flex-wrap: wrap;
         justify-content: center;
     }
+<<<<<<< HEAD
+=======
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+>>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
     
     .quantity-controls {
         gap: 0.7rem;

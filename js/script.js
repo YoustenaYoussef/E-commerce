@@ -221,8 +221,11 @@ const products = [
     }
 ];
 
+<<<<<<< HEAD
 export { products };
 
+=======
+>>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
 const productQuantities = {};
 
 products.forEach(product => {
@@ -258,6 +261,28 @@ const saveToLocalStorage = (key, value) => {
     localStorage.setItem(key, JSON.stringify(value));
 };
 
+<<<<<<< HEAD
+=======
+const showToast = (message, type = 'success') => {
+    let toastContainer = document.getElementById('toast-container');
+    if (!toastContainer) {
+        toastContainer = document.createElement('div');
+        toastContainer.id = 'toast-container';
+        document.body.appendChild(toastContainer);
+    }
+
+    const toast = document.createElement('div');
+    toast.className = `toast toast-${type}`;
+    toast.textContent = message;
+    toastContainer.appendChild(toast);
+
+    setTimeout(() => {
+        toast.classList.add('hide');
+        setTimeout(() => toast.remove(), 250);
+    }, 2200);
+};
+
+>>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
 
 const isLoggedIn = () => {
     const session = getFromLocalStorage('currentUser');
@@ -272,6 +297,31 @@ const getCart = () => getFromLocalStorage('cart', []);
 
 const saveCart = (cart) => saveToLocalStorage('cart', cart);
 
+<<<<<<< HEAD
+=======
+const getFavorites = () => getFromLocalStorage('favorites', []);
+
+
+const saveFavorites = (favorites) => saveToLocalStorage('favorites', favorites);
+
+
+const isFavorite = (productId) => getFavorites().includes(productId);
+
+
+const toggleFavorite = (productId) => {
+    const favorites = getFavorites();
+    const isAlreadyFavorite = favorites.includes(productId);
+
+    const updatedFavorites = isAlreadyFavorite
+        ? favorites.filter(id => id !== productId)
+        : [productId, ...favorites];
+
+    saveFavorites(updatedFavorites);
+
+    return !isAlreadyFavorite;
+};
+
+>>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
 const updateCartCount = () => {
     const cart = getCart();
     const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
@@ -315,7 +365,11 @@ const addToCart = (productId) => {
     productQuantities[productId] = 1;
     
     updateCartCount();
+<<<<<<< HEAD
     alert(`${quantityToAdd} item(s) added to cart!`);
+=======
+    showToast(`${quantityToAdd} item(s) added to cart.`);
+>>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
     
     renderProducts();
 };
@@ -350,6 +404,77 @@ const getStarRating = (rating = 0) => {
     return stars.join('');
 };
 
+<<<<<<< HEAD
+=======
+const renderFavoritesSection = () => {
+    const container = document.getElementById('favorites-container');
+    if (!container) return;
+
+    const favorites = getFavorites();
+    const favoriteProducts = favorites
+        .map(favoriteId => products.find(product => product.id === favoriteId))
+        .filter(Boolean);
+
+    container.innerHTML = '';
+
+    if (favoriteProducts.length === 0) {
+        container.innerHTML = `
+            <div class="empty-cart">
+                <h3>No favorites yet</h3>
+                <p>Tap the heart icon on any product to save it here.</p>
+                <a href="index.html" class="empty-state-link">Browse Products</a>
+            </div>
+        `;
+        return;
+    }
+
+    favoriteProducts.forEach(({ id, name, price, image, category }) => {
+        const favoriteCard = document.createElement('div');
+        favoriteCard.className = 'product-card favorite-card';
+
+        favoriteCard.innerHTML = `
+            <div class="favorite-icon active" data-id="${id}">♥</div>
+            <img src="${image}" alt="${name}" onerror="this.src='https://via.placeholder.com/300x200?text=No+Image'">
+            <div class="product-info">
+                <h3>${name}</h3>
+                <p class="category">${category}</p>
+                <p class="price">$ ${price}</p>
+            </div>
+            <button class="add-to-cart-product" data-id="${id}">Add to Cart</button>
+        `;
+
+        favoriteCard.addEventListener('click', (e) => {
+            if (!e.target.classList.contains('add-to-cart-product') && !e.target.classList.contains('favorite-icon')) {
+                window.location.href = `product-details.html?id=${id}`;
+            }
+        });
+
+        container.appendChild(favoriteCard);
+    });
+
+    const removeFavoriteButtons = container.querySelectorAll('.favorite-icon');
+    removeFavoriteButtons.forEach(icon => {
+        icon.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const productId = parseInt(e.target.dataset.id);
+            const isNowFavorite = toggleFavorite(productId);
+            renderFavoritesSection();
+            renderProducts();
+            showToast(isNowFavorite ? 'Added to favorites.' : 'Removed from favorites.', isNowFavorite ? 'success' : 'info');
+        });
+    });
+
+    const addButtons = container.querySelectorAll('.add-to-cart-product');
+    addButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const productId = parseInt(e.target.dataset.id);
+            addToCart(productId);
+        });
+    });
+};
+
+>>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
 const renderProducts = (productsToRender = products) => {
     const container = document.getElementById('products-container');
     if (!container) return;
@@ -366,8 +491,15 @@ const renderProducts = (productsToRender = products) => {
 
         const currentQuantity = productQuantities[id];
 
+<<<<<<< HEAD
         productCard.innerHTML = `
             <div class="favorite-icon" data-id="${id}">♡</div>
+=======
+        const favoriteActive = isFavorite(id);
+
+        productCard.innerHTML = `
+            <div class="favorite-icon ${favoriteActive ? 'active' : ''}" data-id="${id}">${favoriteActive ? '♥' : '♡'}</div>
+>>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
             <img src="${image}" alt="${name}" onerror="this.src='https://via.placeholder.com/300x200?text=No+Image'">
             <div class="product-info">
                 <h3>${name}</h3>
@@ -401,8 +533,17 @@ const renderProducts = (productsToRender = products) => {
     favoriteIcons.forEach(icon => {
         icon.addEventListener('click', (e) => {
             e.stopPropagation();
+<<<<<<< HEAD
             icon.classList.toggle('active');
             icon.textContent = icon.classList.contains('active') ? '♥' : '♡';
+=======
+            const productId = parseInt(icon.dataset.id);
+            const isNowFavorite = toggleFavorite(productId);
+            icon.classList.toggle('active');
+            icon.textContent = icon.classList.contains('active') ? '♥' : '♡';
+            renderFavoritesSection();
+            showToast(isNowFavorite ? 'Added to favorites.' : 'Removed from favorites.', isNowFavorite ? 'success' : 'info');
+>>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
         });
     });
 
@@ -500,17 +641,123 @@ const scrollToTop = () => {
     });
 };
 
+<<<<<<< HEAD
+=======
+const initContactForm = () => {
+    const contactForm = document.getElementById('contact-form');
+    if (!contactForm) return;
+
+    const contactStatus = document.getElementById('contact-status');
+
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const nameInput = document.getElementById('contact-name');
+        const emailInput = document.getElementById('contact-email');
+        const subjectInput = document.getElementById('contact-subject');
+        const messageInput = document.getElementById('contact-message');
+
+        const name = nameInput.value.trim();
+        const email = emailInput.value.trim();
+        const subject = subjectInput.value.trim();
+        const message = messageInput.value.trim();
+
+        const nameError = document.getElementById('contact-name-error');
+        const emailError = document.getElementById('contact-email-error');
+        const subjectError = document.getElementById('contact-subject-error');
+        const messageError = document.getElementById('contact-message-error');
+
+        if (nameError) nameError.textContent = '';
+        if (emailError) emailError.textContent = '';
+        if (subjectError) subjectError.textContent = '';
+        if (messageError) messageError.textContent = '';
+
+        let hasError = false;
+
+        if (name.length < 2) {
+            hasError = true;
+            if (nameError) nameError.textContent = 'Please enter at least 2 characters.';
+        }
+
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+            hasError = true;
+            if (emailError) emailError.textContent = 'Please enter a valid email address.';
+        }
+
+        if (subject.length < 3) {
+            hasError = true;
+            if (subjectError) subjectError.textContent = 'Subject should be at least 3 characters.';
+        }
+
+        if (message.length < 10) {
+            hasError = true;
+            if (messageError) messageError.textContent = 'Message should be at least 10 characters.';
+        }
+
+        if (hasError) {
+            if (contactStatus) {
+                contactStatus.textContent = 'Please fix highlighted fields.';
+                contactStatus.className = 'contact-status error';
+            }
+            return;
+        }
+
+        const submitBtn = document.querySelector('.contact-submit-btn');
+        if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+        }
+
+        const savedMessages = getFromLocalStorage('contactMessages', []);
+        savedMessages.push({
+            id: Date.now(),
+            name,
+            email,
+            subject,
+            message,
+            createdAt: new Date().toISOString()
+        });
+        saveToLocalStorage('contactMessages', savedMessages);
+
+        contactForm.reset();
+
+        if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Send Message';
+        }
+
+        if (contactStatus) {
+            contactStatus.textContent = 'Message sent successfully. Thank you!';
+            contactStatus.className = 'contact-status success';
+        }
+
+        showToast('Your message has been sent.');
+    });
+};
+
+>>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
 
 const init = () => {
   
     startAutoSlider();
     
     renderProducts();
+<<<<<<< HEAD
+=======
+
+    renderFavoritesSection();
+>>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
     
     updateCartCount();
     
     updateNavigation();
 
+<<<<<<< HEAD
+=======
+    initContactForm();
+
+>>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
     const categoryButtons = document.querySelectorAll('.category-btn');
     categoryButtons.forEach(btn => {
         btn.addEventListener('click', (e) => {
@@ -541,6 +788,7 @@ const init = () => {
 };
 
 document.addEventListener('DOMContentLoaded', init);
+<<<<<<< HEAD
 
 
 export {
@@ -560,3 +808,5 @@ export {
     decreaseProductQuantity,
     productQuantities
 };
+=======
+>>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
