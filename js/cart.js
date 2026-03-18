@@ -20,6 +20,21 @@ const getCart = () => getFromLocalStorage('cart', []);
 
 const saveCart = (cart) => saveToLocalStorage('cart', cart);
 
+<<<<<<< HEAD
+=======
+const PROMO_CODES = {
+    SAVE10: { type: 'percentage', value: 10 },
+    WELCOME15: { type: 'percentage', value: 15 },
+    FLAT50: { type: 'fixed', value: 50 }
+};
+
+const getAppliedPromo = () => getFromLocalStorage('appliedPromo', null);
+
+const saveAppliedPromo = (promoCode) => saveToLocalStorage('appliedPromo', promoCode);
+
+const clearAppliedPromo = () => localStorage.removeItem('appliedPromo');
+
+>>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
 
 const updateCartCount = () => {
     const cart = getCart();
@@ -39,6 +54,7 @@ const calculateTotal = (cart) => {
     }, 0); 
 };
 
+<<<<<<< HEAD
 
 const updateTotalDisplay = () => {
     const cart = getCart();
@@ -48,6 +64,121 @@ const updateTotalDisplay = () => {
     
         totalElement.textContent = `${total}$`;
     }
+=======
+const calculateDiscountAmount = (subtotal, promoCode) => {
+    if (!promoCode || !PROMO_CODES[promoCode]) return 0;
+
+    const promo = PROMO_CODES[promoCode];
+
+    if (promo.type === 'percentage') {
+        return (subtotal * promo.value) / 100;
+    }
+
+    return Math.min(promo.value, subtotal);
+};
+
+
+const updateTotalDisplay = () => {
+    const cart = getCart();
+    const subtotal = calculateTotal(cart);
+    const appliedPromo = getAppliedPromo();
+    const discount = calculateDiscountAmount(subtotal, appliedPromo);
+    const total = subtotal - discount;
+
+    const subtotalElement = document.getElementById('subtotal-amount');
+    const discountElement = document.getElementById('discount-amount');
+    const totalElement = document.getElementById('total-amount');
+
+    if (subtotalElement) {
+        subtotalElement.textContent = `${subtotal.toFixed(2)}$`;
+    }
+
+    if (discountElement) {
+        discountElement.textContent = `${discount.toFixed(2)}$`;
+    }
+
+    if (totalElement) {
+        totalElement.textContent = `${total.toFixed(2)}$`;
+    }
+};
+
+const showPromoMessage = (message, isSuccess = false) => {
+    const promoMessage = document.getElementById('promo-message');
+    if (!promoMessage) return;
+
+    promoMessage.textContent = message;
+    promoMessage.className = `promo-message ${isSuccess ? 'success' : 'error'}`;
+};
+
+const syncPromoControls = () => {
+    const promoInput = document.getElementById('promo-code');
+    const applyBtn = document.getElementById('apply-promo-btn');
+    const removeBtn = document.getElementById('remove-promo-btn');
+    const appliedPromo = getAppliedPromo();
+
+    if (promoInput) promoInput.disabled = Boolean(appliedPromo);
+    if (applyBtn) applyBtn.disabled = Boolean(appliedPromo);
+    if (removeBtn) removeBtn.style.display = appliedPromo ? 'inline-block' : 'none';
+};
+
+const applyPromoCode = () => {
+    const promoInput = document.getElementById('promo-code');
+    if (!promoInput) return;
+
+    const code = promoInput.value.trim().toUpperCase();
+    const cart = getCart();
+    const appliedPromo = getAppliedPromo();
+
+    if (appliedPromo) {
+        showPromoMessage(`Code ${appliedPromo} already applied. Remove it first.`);
+        return;
+    }
+
+    if (cart.length === 0) {
+        showPromoMessage('Add products to cart before applying a promo code.');
+        return;
+    }
+
+    if (!code) {
+        showPromoMessage('Please enter a promo code.');
+        return;
+    }
+
+    if (!PROMO_CODES[code]) {
+        showPromoMessage('Invalid code. Use SAVE10, WELCOME15, or FLAT50.');
+        return;
+    }
+
+    saveAppliedPromo(code);
+    updateTotalDisplay();
+    showPromoMessage(`Code ${code} applied successfully.`, true);
+    syncPromoControls();
+};
+
+const removePromoCode = () => {
+    const appliedPromo = getAppliedPromo();
+    if (!appliedPromo) return;
+
+    clearAppliedPromo();
+    const promoInput = document.getElementById('promo-code');
+    if (promoInput) promoInput.value = '';
+    updateTotalDisplay();
+    showPromoMessage(`Code ${appliedPromo} removed.`, true);
+    syncPromoControls();
+};
+
+const restorePromoCodeUI = () => {
+    const promoInput = document.getElementById('promo-code');
+    if (!promoInput) return;
+
+    const appliedPromo = getAppliedPromo();
+    if (appliedPromo) {
+        promoInput.value = appliedPromo;
+        showPromoMessage(`Code ${appliedPromo} is active.`, true);
+    }
+
+    syncPromoControls();
+>>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
 };
 
 
@@ -103,6 +234,10 @@ const removeItem = (productId) => {
 
 const clearCart = () => {
     saveCart([]);
+<<<<<<< HEAD
+=======
+    clearAppliedPromo();
+>>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
     updateCartCount();
 };
 
@@ -115,6 +250,10 @@ const renderCartItems = () => {
     container.innerHTML = '';
 
     if (cart.length === 0) {
+<<<<<<< HEAD
+=======
+        clearAppliedPromo();
+>>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
         container.innerHTML = `
             <div class="empty-cart">
                 <h3>Your cart is empty</h3>
@@ -185,7 +324,11 @@ const buyNow = () => {
     const cart = getCart();
     
     if (cart.length === 0) {
+<<<<<<< HEAD
         alert('Your cart is empty!');
+=======
+        showPromoMessage('Your cart is empty. Add products first.');
+>>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
         return;
     }
 
@@ -267,6 +410,11 @@ const initCart = () => {
   
     updateTotalDisplay();
 
+<<<<<<< HEAD
+=======
+    restorePromoCodeUI();
+
+>>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
 
     updateNavigation();
 
@@ -276,6 +424,31 @@ const initCart = () => {
         buyNowBtn.addEventListener('click', buyNow);
     }
 
+<<<<<<< HEAD
+=======
+    const applyPromoBtn = document.getElementById('apply-promo-btn');
+    if (applyPromoBtn) {
+        applyPromoBtn.addEventListener('click', applyPromoCode);
+    }
+
+    const removePromoBtn = document.getElementById('remove-promo-btn');
+    if (removePromoBtn) {
+        removePromoBtn.addEventListener('click', removePromoCode);
+    }
+
+    const promoInput = document.getElementById('promo-code');
+    if (promoInput) {
+        promoInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                applyPromoCode();
+            }
+        });
+    }
+
+    syncPromoControls();
+
+>>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
     
     const logoutBtn = document.getElementById('logout-btn');
     if (logoutBtn) {
@@ -293,6 +466,7 @@ const initCart = () => {
 };
 
 document.addEventListener('DOMContentLoaded', initCart);
+<<<<<<< HEAD
 
 export {
     getCart,
@@ -304,3 +478,5 @@ export {
     clearCart,
     buyNow
 };
+=======
+>>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)

@@ -214,6 +214,7 @@ const initAuth = () => {
 };
 
 document.addEventListener('DOMContentLoaded', initAuth);
+<<<<<<< HEAD
 
 
 export {
@@ -224,3 +225,5 @@ export {
     handleRegister,
     handleLogin
 };
+=======
+>>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)

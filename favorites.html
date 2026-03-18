@@ -3,58 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Details - E-Commerce</title>
+    <title>Favorites - E-Commerce</title>
     <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
-  
     <nav class="navbar">
         <div class="nav-brand">
             <a href="index.html">E-Commerce</a>
         </div>
         <div class="nav-links">
             <a href="index.html">Home</a>
-<<<<<<< HEAD
-            <a href="#contact">Contact</a>
-=======
-            <a href="favorites.html">Favorites</a>
+            <a href="favorites.html" class="active">Favorites</a>
             <a href="contact.html">Contact</a>
-            <button id="theme-toggle" class="theme-toggle-btn" type="button">Dark</button>
->>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
             <a href="cart.html" class="cart-icon">
                 🛒 <span id="cart-count">0</span>
             </a>
+            <button id="theme-toggle" class="theme-toggle-btn" type="button">Dark</button>
             <span id="user-name" class="user-name"></span>
             <a href="#" id="auth-link">Login</a>
             <a href="#" id="logout-btn" class="logout-btn" style="display: none;">Logout</a>
         </div>
     </nav>
 
-    
-    <section class="product-details-section">
-        <div class="product-details-container" id="product-details">
-            
-        </div>
+    <section class="favorites-section standalone-favorites">
+        <h2>Your Favorite Products</h2>
+        <div class="products-grid" id="favorites-container"></div>
     </section>
 
-<<<<<<< HEAD
-=======
-    <section class="reviews-wrapper">
-        <div class="reviews-section" id="reviews-section"></div>
-    </section>
-
->>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
-    <!-- Footer -->
     <footer class="footer">
         <button class="scroll-top" id="scroll-top">⬆</button>
     </footer>
 
-<<<<<<< HEAD
-    <script type="module" src="js/product-details.js"></script>
-=======
     <script src="js/theme.js"></script>
     <script src="js/script.js"></script>
-    <script src="js/product-details.js"></script>
->>>>>>> 29479e7 (Added favorites, dark/light mode, reviews, and contact page)
 </body>
 </html>
